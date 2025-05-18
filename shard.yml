@@ -1,0 +1,17 @@
+name: example_app
+version: 0.1.0
+
+authors:
+  - Your Name <your.email@example.com>
+
+targets:
+  app:
+    main: app/example_app.cr
+
+dependencies:
+  takarik:
+    path: ../takarik
+
+crystal: ">= 1.12.1"
+
+license: MIT
