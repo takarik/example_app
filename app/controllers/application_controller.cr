@@ -1,4 +1,3 @@
-
 require "takarik"
 
 # Base abstract controller for all controllers
