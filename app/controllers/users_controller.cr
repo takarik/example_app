@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       "user_name" => JSON::Any.new("John Doe"),
       "email"     => JSON::Any.new("john@example.com"),
       "admin"     => JSON::Any.new(true),
-    }
+    }, layout: :application
   end
 
   def show
@@ -21,12 +21,12 @@ class UsersController < ApplicationController
       "user_name" => JSON::Any.new(user_name),
       "email"     => JSON::Any.new(email),
       "admin"     => JSON::Any.new(admin),
-    }
+    }, layout: :application
   end
 
   def new
     @user = "New user"
-    render
+    render layout: :application
   end
 
   def create

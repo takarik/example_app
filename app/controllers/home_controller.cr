@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  views :index, :show, :foo, :bar
   actions :index, :show, :foo, :bar
   before_actions [
     {method: authenticate_user, except: [:index]},
