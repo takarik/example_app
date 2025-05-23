@@ -3,11 +3,9 @@ class UsersController < ApplicationController
   views :index, :show, :new
 
   def index
-    render view: :index, locals: {
-      "user_name" => JSON::Any.new("John Doe"),
-      "email"     => JSON::Any.new("john@example.com"),
-      "admin"     => JSON::Any.new(true),
-    }, layout: :application
+    render view: :index,
+      locals: locals(user_name: "John Doe", email: "john@example.com", admin: true),
+      layout: :application
   end
 
   def show
@@ -16,12 +14,8 @@ class UsersController < ApplicationController
     email = params["email"]?.try(&.as_s) || "guest@example.com"
     admin = params["admin"]?.try(&.as_bool) || false
 
-    render locals: {
-      "id"        => JSON::Any.new(id),
-      "user_name" => JSON::Any.new(user_name),
-      "email"     => JSON::Any.new(email),
-      "admin"     => JSON::Any.new(admin),
-    }, layout: :application
+    render locals: locals(id: id, user_name: user_name, email: email, admin: admin),
+      layout: :application
   end
 
   def new
