@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = "New user"
     render
   end
 
