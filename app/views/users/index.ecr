@@ -1,7 +1,12 @@
-<h1>INDEX</h1>
-
 <div>
-  <h1>Hello <%= locals["user_name"] %>!</h1>
-  <p>Email: <%= locals["email"] %></p>
-  <p>Admin: <%= locals["admin"] %></p>
+  <h1>Users</h1>
+  <ul>
+    <% if @users && @users.not_nil!.size > 0 %>
+      <% @users.not_nil!.each do |user| %>
+        <li><%= user.name %> <%= user.posts.size %></li>
+      <% end %>
+    <% else %>
+      <li>No users found</li>
+    <% end %>
+  </ul>
 </div>

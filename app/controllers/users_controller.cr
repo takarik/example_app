@@ -2,10 +2,11 @@ class UsersController < ApplicationController
   actions :index, :show, :create, :new
   views :index, :show, :new
 
+  @users : Granite::Collection(User)?
+
   def index
-    render view: :index,
-      locals: locals(user_name: "John Doe", email: "john@example.com", admin: true),
-      layout: :application
+    @users = User.all
+    render layout: :application
   end
 
   def show
