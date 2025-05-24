@@ -5,6 +5,7 @@ require "../controllers/users_controller.cr"
 require "../controllers/admins_controller.cr"
 require "../controllers/foos_controller.cr"
 require "../controllers/bars_controller.cr"
+require "../controllers/session_controller.cr"
 require "log"
 
 Log.debug { "Defining routes..." }
@@ -15,6 +16,12 @@ Takarik::Router.define do
   get "/show",  controller: HomeController, action: :show
   get "/foo",   controller: HomeController, action: :foo
   get "/bar",   controller: HomeController, action: :bar
+
+  # Session management routes
+  get "/login",     controller: SessionController, action: :login_form
+  post "/login",    controller: SessionController, action: :login
+  get "/logout",    controller: SessionController, action: :logout
+  get "/dashboard", controller: SessionController, action: :dashboard
 
   # Controller-scoped routes
   map UsersController do
