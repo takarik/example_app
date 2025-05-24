@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takarik Framework - Static Asset Demo</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Takarik Framework</h1>
+            <p>
+                <span class="status-indicator"></span>
+                Static asset serving is working!
+            </p>
+        </header>
+
+        <main class="features">
+            <div class="feature-card">
+                <h3>🎨 Static Assets</h3>
+                <p>CSS, JavaScript, images, and other static files are served efficiently with proper MIME types, caching headers, and security measures.</p>
+                <div class="code-block">
+                    GET /css/style.css → 200 OK<br>
+                    Content-Type: text/css<br>
+                    Cache-Control: public, max-age=3600<br>
+                    ETag: "a1b2c3d4"
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>🛡️ Security</h3>
+                <p>Built-in protection against directory traversal attacks and proper path validation to keep your server secure.</p>
+                <div class="code-block">
+                    GET /../secret.txt → 404 Not Found<br>
+                    GET /css/../../../etc/passwd → 404 Not Found
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>⚡ Performance</h3>
+                <p>Smart caching with ETag and Last-Modified headers. Conditional requests return 304 Not Modified when appropriate.</p>
+                <div class="code-block">
+                    If-None-Match: "a1b2c3d4"<br>
+                    → 304 Not Modified<br>
+                    (no body sent)
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>🗂️ File Types</h3>
+                <p>Automatic MIME type detection for web assets, images, fonts, documents, and more. Over 30 common file types supported.</p>
+                <div class="code-block">
+                    .css → text/css<br>
+                    .js → application/javascript<br>
+                    .png → image/png<br>
+                    .woff2 → font/woff2
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>📁 Directory Listing</h3>
+                <p>Automatic index file serving for directories. Configurable index files (index.html, index.htm) with fallback support.</p>
+                <div class="code-block">
+                    GET / → serves /index.html<br>
+                    GET /docs/ → serves /docs/index.html
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>⚙️ Configuration</h3>
+                <p>Fully configurable static file serving with custom cache headers, public directory, URL prefix, and more options.</p>
+                <div class="code-block">
+                    Takarik.configure do |config|<br>
+                    &nbsp;&nbsp;config.static_files(<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;public_dir: "./assets",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;cache_control: "max-age=86400"<br>
+                    &nbsp;&nbsp;)<br>
+                    end
+                </div>
+            </div>
+        </main>
+
+        <div class="feature-card" style="text-align: center; margin: 2rem 0;">
+            <h3>🧪 Try the API</h3>
+            <p>Test the framework's API functionality alongside static asset serving:</p>
+            <br>
+            <a href="/users" class="btn" target="_blank">View Users API</a>
+            <button onclick="fetchUsers()" class="btn" style="margin-left: 1rem;">Fetch Users (AJAX)</button>
+        </div>
+
+        <footer class="footer">
+            <p>
+                <strong>Takarik Framework</strong> - A lightweight web framework for Crystal<br>
+                Now featuring comprehensive static asset serving!
+            </p>
+            <p>
+                <a href="https://github.com/takarik/takarik" class="btn" target="_blank">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
