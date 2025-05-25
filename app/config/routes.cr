@@ -11,14 +11,15 @@ require "log"
 Log.debug { "Defining routes..." }
 
 Takarik::Router.define do
+  root HomeController, :index
+
   # Basic routes with explicit controller
-  get "/",      controller: HomeController, action: :index
-  get "/show",  controller: HomeController, action: :show
-  get "/foo",   controller: HomeController, action: :foo
-  get "/bar",   controller: HomeController, action: :bar
+  get "/show",  HomeController, :show
+  get "/foo",   HomeController, :foo
+  get "/bar",   HomeController, :bar
 
   # Session management routes
-  get "/login",     controller: SessionController, action: :login_form
+  get "/login",     controller: SessionController, action: :login_form, name: "login_form"
   post "/login",    controller: SessionController, action: :login
   get "/logout",    controller: SessionController, action: :logout
   get "/dashboard", controller: SessionController, action: :dashboard
@@ -40,18 +41,20 @@ Takarik::Router.define do
   end
 
   # Simple resource with only specific actions
-  resources :foos, controller: FoosController, only: [:index]
+  resources :foos, FoosController, only: [:index]
 
-  # Full resource with nested collection/member blocks
-  resources :admins, controller: AdminsController do
-    # Routes applied to the collection (/admins/...)
-    collection do
-      get "/baz", action: :baz
-    end
+  namespace :admin do
+    # Full resource with nested collection/member blocks
+    resources :admins, controller: AdminsController do
+      # Routes applied to the collection (/admins/...)
+      collection do
+        get "/baz", action: :baz
+      end
 
-    # Routes applied to individual resources (/admins/:id/...)
-    member do
-      get "/qux", action: :qux
+      # Routes applied to individual resources (/admins/:id/...)
+      member do
+        get "/qux", action: :qux
+      end
     end
   end
 end
