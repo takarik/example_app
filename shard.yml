@@ -10,7 +10,7 @@ targets:
 
 dependencies:
   takarik:
-    path: ../takarik
+    github: takarik/takarik
   granite:
     github: amberframework/granite
   micrate:

@@ -1,0 +1,20 @@
+{
+  "name": "Crystal Takarik Example App",
+  "description": "A Crystal web application built with the Takarik framework",
+  "repository": "https://github.com/your-username/example_app",
+  "keywords": ["crystal", "takarik", "web", "framework"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/crystal-lang/heroku-buildpack-crystal.git"
+    }
+  ],
+  "env": {
+    "CRYSTAL_ENV": {
+      "description": "Crystal environment",
+      "value": "production"
+    }
+  },
+  "scripts": {
+    "postdeploy": "bin/migrate up"
+  }
+}

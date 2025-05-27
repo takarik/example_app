@@ -29,6 +29,6 @@ shards:
     version: 0.19.0
 
   takarik:
-    path: ../takarik
-    version: 0.1.0
+    git: https://github.com/takarik/takarik.git
+    version: 0.1.0+git.commit.a88227949b654250d510d08f842a04c5d2a9ac60
 

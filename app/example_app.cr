@@ -29,7 +29,9 @@ end
 require "./config/routes.cr"
 
 # Initialize the application (Router instance will be populated)
-app = Takarik::Application.new
+# Use PORT environment variable for Heroku compatibility
+port = ENV["PORT"]?.try(&.to_i) || 3000
+app = Takarik::Application.new(host: "0.0.0.0", port: port)
 
 # Start the application server
 app.run
