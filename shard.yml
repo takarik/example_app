@@ -11,11 +11,8 @@ targets:
 dependencies:
   takarik:
     github: takarik/takarik
-  granite:
-    github: amberframework/granite
-  micrate:
-    github: amberframework/micrate
-    version: "~> 0.15.1"
+  takarik-data:
+    github: takarik/takarik-data
 
 crystal: ">= 1.12.1"
 

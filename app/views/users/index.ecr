@@ -3,7 +3,7 @@
   <ul>
     <% if @users && @users.not_nil!.size > 0 %>
       <% @users.not_nil!.each do |user| %>
-        <li><%= user.name %> <%= user.posts.size %></li>
+        <li><%= user.id %>. <%= user.name %> <%= user.posts.size %></li>
       <% end %>
     <% else %>
       <li>No users found</li>

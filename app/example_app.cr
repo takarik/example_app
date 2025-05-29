@@ -1,16 +1,13 @@
 require "takarik"
 require "log"
-require "granite"
-require "granite/adapter/sqlite"
+require "takarik-data"
+require "sqlite3"
 
 # Set log level to DEBUG for development
 Log.setup(:debug)
 
-# Setup database connection for Granite
-Granite::Connections << Granite::Adapter::Sqlite.new(
-  name: "primary",
-  url: ENV["DATABASE_URL"]? || "sqlite3:./db/development.db"
-)
+# Setup database connection for Takarik::Data
+Takarik::Data.establish_connection(ENV["DATABASE_URL"]? || "sqlite3:./db/development.db")
 
 # Load models
 require "./models/*"
@@ -28,10 +25,7 @@ end
 # Define and load routes
 require "./config/routes.cr"
 
-# Initialize the application (Router instance will be populated)
-# Use PORT environment variable for Heroku compatibility
-port = ENV["PORT"]?.try(&.to_i) || 3000
-app = Takarik::Application.new(host: "0.0.0.0", port: port)
+app = Takarik::Application.new
 
 # Start the application server
 app.run

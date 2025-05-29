@@ -1,11 +1,6 @@
-class User < Granite::Base
-  include BaseModel
-
-  table users
-
-  column id : Int64, primary: true
-  column name : String
+class User < ApplicationModel
+  column :name, String
   timestamps
 
-  has_many posts : Post
+  has_many :posts, class_name: "Post"
 end

@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   actions :index, :show, :create, :new
   views :index, :show, :new
 
-  @users : Granite::Collection(User)?
+  @users : Array(User)?
 
   def index
-    @users = User.all
+    @users = User.inner_join("posts").to_a
     render layout: :application
   end
 
