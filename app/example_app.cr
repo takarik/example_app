@@ -1,13 +1,8 @@
 require "takarik"
 require "log"
-require "takarik-data"
-require "sqlite3"
 
 # Set log level to DEBUG for development
 Log.setup(:debug)
-
-# Setup database connection for Takarik::Data
-Takarik::Data.establish_connection(ENV["DATABASE_URL"]? || "sqlite3:./db/development.db")
 
 # Load models
 require "./models/*"
