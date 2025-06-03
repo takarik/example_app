@@ -27,6 +27,7 @@ Takarik::Router.define do
   # Controller-scoped routes
   map UsersController do
     get "/users",      action: :index
+    get "/users/list", action: :list
     get "/users/new",  action: :new
     get "/users/:id",  action: :show
     post "/users",     action: :create

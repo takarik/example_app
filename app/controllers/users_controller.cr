@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  actions :index, :show, :create, :new
+  actions :index, :show, :create, :new, :list
   views :index, :show, :new
 
   @users : Array(User)?
@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   def index
     @users = User.inner_join("posts").to_a
     render layout: :application
+  end
+
+  def list
+    @users = User.all.to_a
+    render json: @users
   end
 
   def show
